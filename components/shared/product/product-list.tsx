@@ -1,14 +1,12 @@
-/* eslint-disable react/jsx-key */
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
 import ProductCard from "./product-card";
 import { Product } from "@/types";
+
 const ProductList = ({
   data,
   title,
   limit,
 }: {
-  data: Product;
+  data: Product[];
   title?: string;
   limit?: number;
 }) => {

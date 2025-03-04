@@ -2,7 +2,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
-import { Omega } from "lucide-react";
+// import { Omega } from "lucide-react";
 
 const ProductImages = ({ images }: { images: string[] }) => {
   const [current, setCurrent] = useState(0);
