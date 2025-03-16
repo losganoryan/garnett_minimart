@@ -17,3 +17,11 @@ export const signUpDefaultValues = {
   password: "",
   confirmPassword: "",
 };
+
+export const shippingAddressDefaultValues = {
+  fullName: "Losgano",
+  streetAddress: "104",
+  city: "Galimuyod",
+  postalCode: "2709",
+  country: "Philippines",
+};
