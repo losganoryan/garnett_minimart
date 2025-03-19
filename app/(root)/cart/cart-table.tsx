@@ -76,7 +76,7 @@ const CartTable = ({ cart }: { cart?: Cart }) => {
                         }
                       >
                         {isPending ? (
-                          <Loader className="w-4 h-4" animate-spin="true" />
+                          <Loader className="w-4 h-4 animate-spin" />
                         ) : (
                           <Minus className="w-4 h-4" />
                         )}
@@ -97,7 +97,7 @@ const CartTable = ({ cart }: { cart?: Cart }) => {
                         }
                       >
                         {isPending ? (
-                          <Loader className="w-4 h-4" animate-spin="true" />
+                          <Loader className="w-4 h-4 animate-spin" />
                         ) : (
                           <Plus className="w-4 h-4" />
                         )}
@@ -127,7 +127,7 @@ const CartTable = ({ cart }: { cart?: Cart }) => {
                 }
               >
                 {isPending ? (
-                  <Loader className="w-4 h-4" animate-spin="true" />
+                  <Loader className="w-4 h-4 animate-spin" />
                 ) : (
                   <ArrowRight className="w-4 h-4" />
                 )}{" "}
