@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/table";
 import Pagination from "@/components/shared/pagination";
 import DeleteDialog from "@/components/shared/delete-dialog";
+import { requireAdmin } from "@/lib/auth-guard";
 
 const AdminProductsPage = async (props: {
   searchParams: Promise<{
@@ -20,6 +21,8 @@ const AdminProductsPage = async (props: {
     category: string;
   }>;
 }) => {
+  await requireAdmin();
+
   const searchParams = await props.searchParams;
 
   const page = Number(searchParams.page) || 1;
@@ -35,17 +38,30 @@ const AdminProductsPage = async (props: {
   return (
     <div className="space-y-2">
       <div className="flex-between">
-        <h1 className="bold">Products</h1>
+        <div className="flex items-center gap-3">
+          <h1 className="h2-bold">Products</h1>
+          {searchText && (
+            <div>
+              Filtered by <i>&quot;{searchText}&quot;</i>{" "}
+              <Link href="/admin/products">
+                <Button variant="outline" size="sm">
+                  Remove Filter
+                </Button>
+              </Link>
+            </div>
+          )}
+        </div>
         <Button asChild variant="default">
           <Link href="/admin/products/create">Create Product</Link>
         </Button>
       </div>
+
       <Table>
         <TableHeader>
           <TableRow>
             <TableHead>ID</TableHead>
             <TableHead>NAME</TableHead>
-            <TableHead>PRICE</TableHead>
+            <TableHead className="text-right">PRICE</TableHead>
             <TableHead>CATEGORY</TableHead>
             <TableHead>STOCK</TableHead>
             <TableHead>RATING</TableHead>
@@ -64,7 +80,7 @@ const AdminProductsPage = async (props: {
               <TableCell>{product.stock}</TableCell>
               <TableCell>{product.rating}</TableCell>
               <TableCell className="flex gap-1">
-                <Button asChild variant="outline">
+                <Button asChild variant="outline" size="sm">
                   <Link href={`/admin/products/${product.id}`}>Edit</Link>
                 </Button>
                 <DeleteDialog id={product.id} action={deleteProduct} />
