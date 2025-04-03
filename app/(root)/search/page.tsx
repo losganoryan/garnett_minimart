@@ -29,9 +29,10 @@ const prices = [
   },
 ];
 
-const ratings = [4, 3, 2, 1];
+// const ratings = [4, 3, 2, 1];
 
-const sortOrders = ["newest", "lowest", "highest", "rating"];
+// const sortOrders = ["newest", "lowest", "highest", "rating"];
+const sortOrders = ["newest", "lowest", "highest"];
 
 export async function generateMetadata(props: {
   searchParams: Promise<{
@@ -182,7 +183,7 @@ const SearchPage = async (props: {
           </ul>
         </div>
         {/* Rating Links */}
-        <div className="text-xl mb-2 mt-8">Customer Ratings</div>
+        {/* <div className="text-xl mb-2 mt-8">Customer Ratings</div>
         <div>
           <ul className="space-y-1">
             <li>
@@ -204,7 +205,7 @@ const SearchPage = async (props: {
               </li>
             ))}
           </ul>
-        </div>
+        </div> */}
       </div>
       <div className="md:col-span-4 space-y-4">
         <div className="flex-between flex-col md:flex-row my-4">
