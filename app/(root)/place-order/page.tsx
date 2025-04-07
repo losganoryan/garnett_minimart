@@ -121,7 +121,8 @@ const PlaceOrderPage = async () => {
                 <div>Items</div>
                 <div>{formatCurrency(cart.itemsPrice)}</div>
               </div>
-              <div className="flex justify-between">
+              {/* <div className="flex justify-between hidden"> */}
+              <div className="hidden">
                 <div>Tax</div>
                 <div>{formatCurrency(cart.taxPrice)}</div>
               </div>
@@ -133,7 +134,26 @@ const PlaceOrderPage = async () => {
                 <div>Total</div>
                 <div>{formatCurrency(cart.totalPrice)}</div>
               </div>
-              <PlaceOrderForm />
+              {user.paymentMethod == "Gcash" ? (
+                <p>Gcash under development</p>
+              ) : (
+                <></>
+              )}
+              {Number(cart.itemsPrice) > 499 &&
+              user.paymentMethod !== "Gcash" ? (
+                <PlaceOrderForm />
+              ) : (
+                <></>
+              )}
+
+              {Number(cart.itemsPrice) < 499 &&
+              user.paymentMethod !== "Gcash" ? (
+                <p className="bg-red-500 rounded-lg p-2">
+                  To proceed, Order should be 500 and above
+                </p>
+              ) : (
+                <></>
+              )}
             </CardContent>
           </Card>
         </div>

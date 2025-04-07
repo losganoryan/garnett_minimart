@@ -123,6 +123,33 @@ const AdminOverviewPage = async () => {
             </Table>
           </CardContent>
         </Card>
+        <Card className="col-span-2">
+          <CardHeader>
+            <CardTitle>Top Customers</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHead>NO.</TableHead>
+                  <TableHead>BUYER</TableHead>
+                  <TableHead>TOTAL</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                {summary.latestSales.map((order, index) => (
+                  <TableRow key={order.id}>
+                    <TableCell>{index + 1}</TableCell>
+                    <TableCell>
+                      {order?.user?.name ? order.user.name : "Deleted User"}
+                    </TableCell>
+                    <TableCell>{formatCurrency(order.totalPrice)}</TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </CardContent>
+        </Card>
       </div>
     </div>
   );

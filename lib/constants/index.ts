@@ -31,9 +31,9 @@ export const PAYMENT_METHODS = process.env.PAYMENT_METHODS
   : ["PayPal", "Gcash", "CashOnDelivery"];
 
 export const DEFAULT_PAYMENT_METHOD =
-  process.env.DEFAULT_PAYMENT_METHOD || "PayPal";
+  process.env.DEFAULT_PAYMENT_METHOD || "CashOnDelivery";
 
-export const PAGE_SIZE = Number(process.env.PAGE_SIZE) || 10;
+export const PAGE_SIZE = Number(process.env.PAGE_SIZE) || 100;
 
 export const productDefaultValues = {
   name: "",
@@ -59,3 +59,5 @@ export const reviewFormDefaultValues = {
   comment: "",
   rating: 0,
 };
+
+export const SENDER_EMAIL = process.env.SENDER_EMAIL || "onboarding@resend.dev";
