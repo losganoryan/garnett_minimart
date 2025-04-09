@@ -17,6 +17,7 @@ import { PAGE_SIZE } from "../constants";
 import { revalidatePath } from "next/cache";
 import { z } from "zod";
 import { Prisma } from "@prisma/client";
+import { getMyCart } from "./cart.actions";
 
 //Sign in the user with credentials
 export async function signInWithCredentials(
@@ -40,17 +41,21 @@ export async function signInWithCredentials(
   }
 }
 
-//Sign out
+// Sign user out
 export async function signOutUser() {
+  // get current users cart and delete it so it does not persist to next user
+  const currentCart = await getMyCart();
+  await prisma.cart.delete({ where: { id: currentCart?.id } });
   await signOut();
 }
-
 //Sign up user
 export async function signUpUser(prevState: unknown, formData: FormData) {
   try {
     const user = signUpFormSchema.parse({
       name: formData.get("name"),
       email: formData.get("email"),
+      contactNo: formData.get("contactNo"),
+      storeName: formData.get("storeName"),
       password: formData.get("password"),
       confirmPassword: formData.get("confirmPassword"),
     });
@@ -63,6 +68,8 @@ export async function signUpUser(prevState: unknown, formData: FormData) {
       data: {
         name: user.name,
         email: user.email,
+        contactNo: user.contactNo,
+        storeName: user.storeName,
         password: user.password,
       },
     });

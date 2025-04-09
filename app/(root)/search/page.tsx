@@ -142,20 +142,16 @@ const SearchPage = async (props: {
                 Any
               </Link>
             </li>
-            {categories
-              .sort((a, b) =>
-                a.category.toLowerCase().localeCompare(b.category.toLowerCase())
-              ) // Case-insensitive sorting
-              .map((x) => (
-                <li key={x.category}>
-                  <Link
-                    className={`${category === x.category && "font-bold"}`}
-                    href={getFilterUrl({ c: x.category })}
-                  >
-                    {x.category}
-                  </Link>
-                </li>
-              ))}
+            {categories.map((x) => (
+              <li key={x.category}>
+                <Link
+                  className={`${category === x.category && "font-bold"}`}
+                  href={getFilterUrl({ c: x.category })}
+                >
+                  {x.category}
+                </Link>
+              </li>
+            ))}
           </ul>
         </div>
         {/* Price Links */}

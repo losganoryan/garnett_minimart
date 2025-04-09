@@ -11,6 +11,10 @@ import { getAllCategories } from "@/lib/actions/product.actions";
 import { MenuIcon } from "lucide-react";
 import Link from "next/link";
 
+function encodeValue(str) {
+  return encodeURIComponent(str).replace(/%20/g, "+");
+}
+
 const CategoryDrawer = async () => {
   const categories = await getAllCategories();
 
@@ -25,24 +29,20 @@ const CategoryDrawer = async () => {
         <DrawerHeader>
           <DrawerTitle>Select a category</DrawerTitle>
           <div className="space-y-1 mt-4">
-            {categories
-              .sort((a, b) =>
-                a.category.toLowerCase().localeCompare(b.category.toLowerCase())
-              ) // Case-insensitive sorting
-              .map((x) => (
-                <Button
-                  variant="ghost"
-                  className="w-full justify-start"
-                  key={x.category}
-                  asChild
-                >
-                  <DrawerClose asChild>
-                    <Link href={`/search?category=${x.category}`}>
-                      {x.category} ({x._count})
-                    </Link>
-                  </DrawerClose>
-                </Button>
-              ))}
+            {categories.map((x) => (
+              <Button
+                variant="ghost"
+                className="w-full justify-start"
+                key={x.category}
+                asChild
+              >
+                <DrawerClose asChild>
+                  <Link href={`/search?category=${encodeValue(x.category)}`}>
+                    {x.category} ({x._count})
+                  </Link>
+                </DrawerClose>
+              </Button>
+            ))}
           </div>
         </DrawerHeader>
       </DrawerContent>

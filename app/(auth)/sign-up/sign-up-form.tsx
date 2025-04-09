@@ -54,6 +54,26 @@ const SignUpForm = () => {
           />
         </div>
         <div>
+          <Label htmlFor="storeName">Store Name</Label>
+          <Input
+            id="storeName"
+            name="storeName"
+            type="text"
+            autoComplete="storeName"
+            defaultValue={signUpDefaultValues.storeName}
+          />
+        </div>
+        <div>
+          <Label htmlFor="contactNo">Contact Number</Label>
+          <Input
+            id="contactNo"
+            name="contactNo"
+            type="text"
+            autoComplete="contactNo"
+            defaultValue={signUpDefaultValues.contactNo}
+          />
+        </div>
+        <div>
           <Label htmlFor="password">Password</Label>
           <Input
             id="password"

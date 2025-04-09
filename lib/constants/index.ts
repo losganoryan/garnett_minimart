@@ -14,6 +14,8 @@ export const signInDefaultValues = {
 export const signUpDefaultValues = {
   name: "",
   email: "",
+  storeName: "",
+  contactNo: "",
   password: "",
   confirmPassword: "",
 };
@@ -61,3 +63,6 @@ export const reviewFormDefaultValues = {
 };
 
 export const SENDER_EMAIL = process.env.SENDER_EMAIL || "onboarding@resend.dev";
+
+export const SEMAPHORE_API_KEY =
+  process.env.SEMAPHORE_API_KEY || "291cd98cac3d28461d7a5b106f136a67";
