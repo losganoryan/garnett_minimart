@@ -99,7 +99,7 @@ export async function getAllProducts({
           ? { price: "desc" }
           : sort === "rating"
             ? { rating: "desc" }
-            : { createdAt: "desc" },
+            : { stock: "asc" }, // <-- default to stock ascending
     skip: (page - 1) * limit,
     take: limit,
   });

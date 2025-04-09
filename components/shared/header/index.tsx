@@ -24,7 +24,7 @@ const Header = () => {
             </span>
           </Link>
         </div>
-        <div className="hidden md:block">
+        <div className="md:block">
           <Search />
         </div>
         <Menu />

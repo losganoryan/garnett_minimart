@@ -69,24 +69,32 @@ const AdminProductsPage = async (props: {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {products.data.map((product) => (
-            <TableRow key={product.id}>
-              <TableCell>{formatId(product.id)}</TableCell>
-              <TableCell>{product.name}</TableCell>
-              <TableCell className="text-right">
-                {formatCurrency(product.price)}
-              </TableCell>
-              <TableCell>{product.category}</TableCell>
-              <TableCell>{product.stock}</TableCell>
-              {/* <TableCell>{product.rating}</TableCell> */}
-              <TableCell className="flex gap-1">
-                <Button asChild variant="outline" size="sm">
-                  <Link href={`/admin/products/${product.id}`}>Edit</Link>
-                </Button>
-                <DeleteDialog id={product.id} action={deleteProduct} />
-              </TableCell>
-            </TableRow>
-          ))}
+          {products.data
+            .sort((a, b) => a.stock - b.stock)
+            .map((product) => (
+              <TableRow key={product.id}>
+                <TableCell>{formatId(product.id)}</TableCell>
+                <TableCell>{product.name}</TableCell>
+                <TableCell className="text-right">
+                  {formatCurrency(product.price)}
+                </TableCell>
+                <TableCell>{product.category}</TableCell>
+                <TableCell
+                  className={
+                    product.stock < 11 ? "bg-red-500 font-semibold" : ""
+                  }
+                >
+                  {product.stock}
+                </TableCell>
+                {/* <TableCell>{product.rating}</TableCell> */}
+                <TableCell className="flex gap-1">
+                  <Button asChild variant="outline" size="sm">
+                    <Link href={`/admin/products/${product.id}`}>Edit</Link>
+                  </Button>
+                  <DeleteDialog id={product.id} action={deleteProduct} />
+                </TableCell>
+              </TableRow>
+            ))}
         </TableBody>
       </Table>
       {products.totalPages > 1 && (

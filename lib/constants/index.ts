@@ -62,7 +62,7 @@ export const reviewFormDefaultValues = {
   rating: 0,
 };
 
-export const SENDER_EMAIL = process.env.SENDER_EMAIL || "onboarding@resend.dev";
+export const SENDER_EMAIL = process.env.SENDER_EMAIL || "admin@ichooseiccb.com";
 
 export const SEMAPHORE_API_KEY =
-  process.env.SEMAPHORE_API_KEY || "291cd98cac3d28461d7a5b106f136a67";
+  process.env.SEMAPHORE_API_KEY || "8a7398df9b62a71fcd210dd5830d08c5";
